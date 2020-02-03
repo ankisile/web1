@@ -3,15 +3,100 @@
 <head>
   <title>WEB1 - JavaScript</title>
   <meta charset="utf-8">
+  <style>
+  #active{
+    color:red;
+  }
+  body{
+    margin:0;
+  }
+  a{
+    color:navy;
+    text-decoration: none;
+  }
+  h1{
+    font-size: 45px;
+    text-align: center;
+    border-bottom:1px solid gray;
+    margin:0;
+    padding:20px;
+  }
+  ol{
+    border-right:1px solid gray;
+    width:100px;
+    margin:10px;
+    padding:20px;
+  }
+  #grid{
+    display:grid;
+    grid-template-columns: 150px 1fr
+  }
+  #grid ol{
+    padding-left: 32px;
+  }
+  #grid #article{
+    padding-left:46px;
+    padding-right:40px;
+    margin-bottom:40px;
+}
+  </style>
+  <script>
+    var Links = {
+      setColor:function(color){
+        var links = document.querySelectorAll('a');
+        var i = 0;
+        while(i < links.length){
+          links[i].style.color = color;
+          i = i + 1;
+        }
+      }
+    }
+    var Body = {
+      setColor:function(color){
+        document.querySelector('body').style.color = color;
+      },
+      setBackgroundColor:function(color){
+        document.querySelector('body').style.backgroundColor = color;
+      }
+
+    }
+
+    function nightDayHandler(self){
+      var target = document.querySelector('body');
+      if (self.value === 'night'){
+        Body.setBackgroundColor('black');
+        Body.setColor('white');
+        self.value = 'day';
+        Links.setColor('powderblue');
+        document.querySelector('#active').style.color = 'orange';
+      }
+      else{
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
+        self.value = 'night';
+        Links.setColor('navy');
+        document.querySelector('#active').style.color = 'red';
+      }
+    }
+  </script>
 </head>
 <body>
   <h1><a href="index.html">WEB</a></h1>
-  <ol>
-    <li><a href="1.html">HTML</a></li>
-    <li><a href="2.html">CSS</a></li>
-    <li><a href="3.html">JavaScript</a></li>
-  </ol>
-  <h2>JavaScript</h2>
-  <p><strong>JavaScript</strong> often abbreviated as JS, is a high-level, just-in-time compiled, multi-paradigm programming language that conforms to the ECMAScript specification. JavaScript has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions. Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications. The vast majority of websites use it, and major web browsers have a dedicated JavaScript engine to execute it.</p>
+  <input type="button" value="night" onclick = "
+    nightDayHandler(this);
+  ">
+  <div id="grid">
+    <ol>
+      <li><a href="1.html">HTML</a></li>
+      <li><a href="2.html">CSS</a></li>
+      <li><a href="3.html" id="active">JavaScript</a></li>
+    </ol>
+    <div id="article">
+      <h2>JavaScript</h2>
+      <p><strong><a href="https://www.w3schools.com/js/" target="_blank" title="JS specification">JavaScript</a></strong> often abbreviated as JS, is a high-level, just-in-time compiled, multi-paradigm programming language that conforms to the ECMAScript specification. JavaScript has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions. Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications. The vast majority of websites use it, and major web browsers have a dedicated JavaScript engine to execute it.</p>
+      <img src="js.jpg" width=100%>
+    </div>
+  </div>
+
 </body>
 </html>
